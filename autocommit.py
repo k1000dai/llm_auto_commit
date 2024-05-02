@@ -13,6 +13,23 @@ prompt = f"""
 Write a simple and understadable commit message for the following changes:
 
 # Changes
+change will be written here
+
+Plese output with format like below
+<output>
+<commit_message>"your commit message"</commit_message>
+<misc>write some miscellaneous information</misc>
+</output>
+<|end|>
+<|assistant|>
+<output>
+<commit_message>Fix bug</commit_message>
+<misc>hoge</misc>
+</output>
+<|user|>
+Write a simple and understadable commit message for the following changes:
+
+# Changes
 {diff}
 
 Plese output with format like below
@@ -20,15 +37,9 @@ Plese output with format like below
 <commit_message>"your commit message"</commit_message>
 <misc>write some miscellaneous information</misc>
 </output>
-
-# Example
-<output>
-<commit_message>Fix bug</commit_message>
-<misc>hoge</misc>
-</output>
-
-<|end|>
 <|assistant|>
+<output>
+<commit_message>
 """
 
 data = {
@@ -50,7 +61,7 @@ response_text = response_json['response']
 
 
 try:
-    commit_message = response_text.split('<commit_message>')[1].split('</commit_message>')[0]
+    commit_message = response_text.split('</commit_message>')[0]
     print(commit_message)
     y_n = input('Do you want to commit? [y/n]: ')
     if y_n == 'n':
