@@ -84,6 +84,9 @@ def main():
             cm = input('Please input commit message: ')
             subprocess.run(['git', 'commit', '-m', cm])
     except Exception as e:
+        print(e)
+        print('raw response is below')
+        print("====================================")
         print(response_text)
 
 if __name__ == '__main__':
