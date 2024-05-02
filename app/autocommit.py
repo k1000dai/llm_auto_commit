@@ -72,8 +72,7 @@ def main():
                 
     response_json = json.loads(response.read().decode())
     response_text = response_json['response']
-
-    print(response_text)
+    
     # git commit にコミットメッセージを渡す
     try:
         commit_message = response_text.split(',')[0]
