@@ -52,6 +52,9 @@ response_text = response_json['response']
 try:
     commit_message = response_text.split('<commit_message>')[1].split('</commit_message>')[0]
     print(commit_message)
+    y_n = input('Do you want to commit? [y/n]: ')
+    if y_n == 'n':
+        exit()
     subprocess.run(['git', 'commit', '-m', commit_message])
 except Exception as e:
     print(response_text)
