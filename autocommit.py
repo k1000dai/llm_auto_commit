@@ -47,6 +47,11 @@ response_json = json.loads(response.read().decode())
 response_text = response_json['response']
 
 # git commit にコミットメッセージを渡す
-commit_message = response_text.split('<commit_message>')[1].split('</commit_message>')[0]
-print(commit_message)
-subprocess.run(['git', 'commit', '-m', commit_message])
+
+
+try:
+    commit_message = response_text.split('<commit_message>')[1].split('</commit_message>')[0]
+    print(commit_message)
+    subprocess.run(['git', 'commit', '-m', commit_message])
+except Exception as e:
+    print(response_text)
