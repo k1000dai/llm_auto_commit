@@ -1,8 +1,8 @@
 from urllib.request import Request, urlopen
 import json
 import subprocess
-
-def main():
+from argparse import ArgumentParser
+def main(debag=False):
     # git diff 取得
     cp = subprocess.run(['git', 'diff','--staged'], encoding='utf-8', stdout=subprocess.PIPE)
     diff = cp.stdout
@@ -58,6 +58,9 @@ def main():
         {{
             commit_message:"""
 
+    if debag:
+        print(prompt)
+        
     data = {
     "model": "phi3",
     "prompt": prompt,
@@ -73,6 +76,8 @@ def main():
     response_json = json.loads(response.read().decode())
     response_text = response_json['response']
     
+    if debag:
+        print(response_text)
     # git commit にコミットメッセージを渡す
     try:
         commit_message = response_text.split(',')[0]
@@ -90,4 +95,6 @@ def main():
         print(response_text)
 
 if __name__ == '__main__':
-    main()
+    args = ArgumentParser()
+    args.add_argument('-d','--debug', action='store_true')
+    main(args.debug)
