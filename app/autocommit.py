@@ -66,9 +66,11 @@ def main():
         commit_message = response_text.split('</commit_message>')[0]
         print(commit_message)
         y_n = input('Do you want to commit? [y/n]: ')
-        if y_n == 'n':
-            exit()
-        subprocess.run(['git', 'commit', '-m', commit_message])
+        if y_n == 'y':
+            subprocess.run(['git', 'commit', '-m', commit_message])
+        else:
+            cm = input('Please input commit message: ')
+            subprocess.run(['git', 'commit', '-m', cm])
     except Exception as e:
         print(response_text)
 

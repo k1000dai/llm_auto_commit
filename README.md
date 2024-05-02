@@ -34,4 +34,4 @@ Implement installation instructions for llm-auto-commit package in README.md
     
 Do you want to commit? [y/n]: y
 ```
-if enter y , it will be committed.
+if enter y , it will be committed
