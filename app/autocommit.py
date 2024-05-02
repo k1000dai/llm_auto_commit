@@ -30,6 +30,7 @@ def main():
     <commit_message>Fix bug</commit_message>
     <misc>hoge</misc>
     </output>
+    <|end|>
     <|user|>
     Write a simple and understadable commit message for the following changes:
 
@@ -41,10 +42,10 @@ def main():
     <commit_message>"your commit message"</commit_message>
     <misc>write some miscellaneous information</misc>
     </output>
+    <|end|>
     <|assistant|>
     <output>
-    <commit_message>
-    """
+    <commit_message>"""
 
     data = {
     "model": "phi3",

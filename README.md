@@ -36,6 +36,9 @@ Do you want to commit? [y/n]: y
 ```
 if enter y , it will be committed
 
+## Future Work
+* Using MLX for Apple Silicon
+
 ## License
 ```
 MIT License
