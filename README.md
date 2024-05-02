@@ -1,2 +1,7 @@
 # llm_auto_commit
-This is a simple script that automatically commits and pushes changes to a git repository. It is intended to be used in a cron job to automatically commit changes to a repository at a set interval.
+
+This is a auto commit tool for git.
+It uses local language model to generate commit message.
+
+I came up with the idea when I see the article below.
+https://zenn.dev/takaha4k/articles/7cd3ac44ee2c7b
