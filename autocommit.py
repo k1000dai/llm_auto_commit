@@ -10,55 +10,15 @@ url = "http://localhost:11434/api/generate"
 
 prompt = """
 <|user|>
-Write the simple and understandable commit message about 10 words by reading git diff below.
+Generate a concise git commit message written in present tense for the following code diff with the given specifications below
+Commit message must be a maximum of 10 characters.
+Exclude anything unnecessary such as translation. Your entire response will be passed directly into git commit.
 
-git diff --staged is as follows.
-'''
-[git diff --staged is here]
-'''
-
-The commit message should be written as follows.
-Only provide the commit message, do not include the explanation of the commit message.
-
-[COMMIT]your commit message here
-
-<|end|>
-<|assistant|>
-[COMMIT]commit message
-<|end|>
-<|user|>
-Write the simple and understandable commit message about 10 words by reading git diff below.
-
-git diff --staged is as follows.
-'''
-[git diff --staged is here]
-'''
-
-The commit message should be written as follows.
-Only provide the commit message, do not include the explanation of the commit message.
-
-[COMMIT]your commit message here
-
-<|end|>
-<|assistant|>
-[COMMIT]commit message
-<|end|>
-<|user|>
-Write the simple and understandable commit message about 10 words by reading git diff below.
-
-git diff --staged is as follows.
-'''
+git diff --staged is as follows:
 {}
-'''
-
-The commit message should be written as follows.
-Only provide the commit message, do not include the explanation of the commit message.
-
-[COMMIT]your commit message here
 
 <|end|>
 <|assistant|>
-[COMMIT]
 """.format(diff)
 
 
