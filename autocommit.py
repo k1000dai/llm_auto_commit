@@ -36,4 +36,5 @@ response = urlopen(request)
 
 response_json = json.loads(response.read().decode())
 
+print("-----------------")
 print(response_json['response'])
