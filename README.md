@@ -35,3 +35,10 @@ Implement installation instructions for llm-auto-commit package in README.md
 Do you want to commit? [y/n]: y
 ```
 if enter y , it will be committed
+
+## License
+```
+MIT License
+
+Copyright (c) 2024 k1000dai
+```
