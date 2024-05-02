@@ -7,17 +7,17 @@ I came up with the idea when I see the article below.
 https://zenn.dev/takaha4k/articles/7cd3ac44ee2c7b
 
 ## How to Install
-### Step.1
+### Step.1 install Ollama
 
-install Ollama https://ollama.com/
+ https://ollama.com/
 
-### Step.2
+### Step.2 install LLM
+```
+ollama run phi3
+```
+### Step.3 clone this repository and install
 ```
 git clone https://github.com/k1000dai/llm_auto_commit.git
-```
-
-### Step.3
-```
 pip install .
 ```
 
