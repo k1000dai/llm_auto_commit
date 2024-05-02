@@ -8,8 +8,6 @@ def main():
     parser.add_argument('-d','--debug', action='store_true')
     args = parser.parse_args() 
     
-    debag = args.debug
-    
     # git diff 取得
     cp = subprocess.run(['git', 'diff','--staged'], encoding='utf-8', stdout=subprocess.PIPE)
     diff = cp.stdout
@@ -65,7 +63,7 @@ def main():
         {{
             commit_message:"""
 
-    if debag:
+    if args.debug:
         print(prompt)
         
     data = {
@@ -83,7 +81,7 @@ def main():
     response_json = json.loads(response.read().decode())
     response_text = response_json['response']
     
-    if debag:
+    if args.debug:
         print(response_text)
     # git commit にコミットメッセージを渡す
     try:
