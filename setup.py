@@ -7,7 +7,7 @@ setup(
     packages=setuptools.find_packages(),
     entry_points={
         "console_scripts": [
-            "gitac = autocommit:main"
+            "gitac = app.autocommit:main"
         ]
     },
 )

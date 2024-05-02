@@ -2,10 +2,13 @@ from urllib.request import Request, urlopen
 import json
 import subprocess
 
-def autocommit():
+def main():
     # git diff 取得
     cp = subprocess.run(['git', 'diff','--staged'], encoding='utf-8', stdout=subprocess.PIPE)
     diff = cp.stdout
+    if diff.strip() == '':
+        print('No changes to commit. Exiting')
+        return 
 
     url = "http://localhost:11434/api/generate"
 
@@ -70,4 +73,4 @@ def autocommit():
         print(response_text)
 
 if __name__ == '__main__':
-    autocommit()
+    main()
