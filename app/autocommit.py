@@ -95,6 +95,7 @@ def main(debag=False):
         print(response_text)
 
 if __name__ == '__main__':
-    args = ArgumentParser()
-    args.add_argument('-d','--debug', action='store_true')
+    parser = ArgumentParser()
+    parser.add_argument('-d','--debug', action='store_true')
+    args = parser.parse_args() 
     main(args.debug)
