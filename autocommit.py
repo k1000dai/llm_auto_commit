@@ -5,54 +5,39 @@ import subprocess
 # git diff 取得
 cp = subprocess.run(['git', 'diff','--staged'], encoding='utf-8', stdout=subprocess.PIPE)
 diff = cp.stdout#.replace('\n', ' ')
-print(diff)
 
 url = "http://localhost:11434/api/generate"
 
 prompt = """
-<|system|>
-Only Write the commit message. Do not output without commit message for saving tokens.<|end|>
 <|user|>
-Write the simple and understandable commit message by reading git diff below.
-----
-diff --git a/test b/test
-index 49fe595..e6e041e 100644
---- a/test
-+++ b/test
-@@ -1 +1,2 @@
--# llm_auto_commit
-\ No newline at end of file
-+# llm_auto_commit
-+This is a simple script that automatically commits and pushes changes to a git repository. It is intended to be used in a cron job to automatically commit changes to a repository at a set interval.
-\ No newline at end of file
-<|end|>
-<|assistant|>
-commit message: "test is updated"<|end|>
-<|end|>
-<|user|>
-Write the simple and understandable commit message by reading git diff below.
-----
-diff --git a/hoge b/hoge
-index 49fe595..e6e041e 100644
---- a/test
-+++ b/test
-@@ -1 +1,2 @@
-\ No newline at end of file
-+ hoeghoge
-<|end|>
-<|assistant|>
-commit message: "write discription about hoge"<|end|>
-<|end|>
-<|user|>
-Write the simple and understandable commit message by reading git diff below.
-----
+Write the simple and understandable commit message about 10 words by reading git diff below.
+
+git diff --staged is as follows.
+'''
 {}
+'''
+
+Follow the format below.
+
+<prefix>your prefix here</prefix> 
+<commit>your commit message here</commit>
+
+prefix list:
+- feat: A new feature
+- fix: A bug fix
+- docs: Documentation only changes
+- style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- refactor: A code change that neither fixes a bug nor adds a feature
+- perf: A code change that improves performance
+- test: Adding missing or correcting existing tests
+- build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+- ci: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+- chore: Other changes that don't modify src or test files
+- revert: Reverts a previous commit
 <|end|>
 <|assistant|>
-commit message: 
 """.format(diff)
 
-print(prompt)
 
 data = {
   "model": "phi3",
