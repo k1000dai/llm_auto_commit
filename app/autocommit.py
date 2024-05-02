@@ -2,7 +2,14 @@ from urllib.request import Request, urlopen
 import json
 import subprocess
 from argparse import ArgumentParser
-def main(debag=False):
+def main():
+    #argparse
+    parser = ArgumentParser()
+    parser.add_argument('-d','--debug', action='store_true')
+    args = parser.parse_args() 
+    
+    debag = args.debug
+    
     # git diff 取得
     cp = subprocess.run(['git', 'diff','--staged'], encoding='utf-8', stdout=subprocess.PIPE)
     diff = cp.stdout
@@ -95,7 +102,4 @@ def main(debag=False):
         print(response_text)
 
 if __name__ == '__main__':
-    parser = ArgumentParser()
-    parser.add_argument('-d','--debug', action='store_true')
-    args = parser.parse_args() 
-    main(args.debug)
+    main()
