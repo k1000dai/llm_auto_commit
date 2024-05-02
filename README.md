@@ -37,6 +37,8 @@ Do you want to commit? [y/n]: y
 if enter y , it will be committed
 
 ## Options
+* -d,--debug: show debug message
+* -h,--help: show help message
 
 ## Future Work
 * Using MLX for Apple Silicon
