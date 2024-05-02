@@ -20,16 +20,22 @@ def main():
     change will be written here
 
     Plese output with format like below
-    <output>
-    <commit_message>"your commit message"</commit_message>
-    <misc>write some miscellaneous information</misc>
-    </output>
+    {{
+        output:
+        {{
+            commit_message: "your commit message",
+            misc: "write some miscellaneous information"
+        }}
+    }}
     <|end|>
     <|assistant|>
-    <output>
-    <commit_message>Fix bug</commit_message>
-    <misc>hoge</misc>
-    </output>
+    {{
+        output:
+        {{
+            commit_message: "Fix bug",
+            misc: "hogehgoe"
+        }}
+    }}
     <|end|>
     <|user|>
     Write a simple and understadable commit message for the following changes:
@@ -38,15 +44,20 @@ def main():
     {diff}
 
     Plese output with format like below
-    <output>
-    <commit_message>"your commit message"</commit_message>
-    <misc>write some miscellaneous information</misc>
-    </output>
+    {{
+        output:
+        {{
+            commit_message: "your commit message",
+            misc: "write some miscellaneous information"
+        }}
+    }}
     <|end|>
     <|assistant|>
-    <output>
-    <commit_message>"""
-
+    {{
+        output:
+        {{
+            commit_message:"""
+    print(prompt)
     data = {
     "model": "phi3",
     "prompt": prompt,
@@ -62,18 +73,19 @@ def main():
     response_json = json.loads(response.read().decode())
     response_text = response_json['response']
 
-    # git commit にコミットメッセージを渡す
-    try:
-        commit_message = response_text.split('</commit_message>')[0]
-        print(commit_message)
-        y_n = input('Do you want to commit? [y/n]: ')
-        if y_n == 'y':
-            subprocess.run(['git', 'commit', '-m', commit_message])
-        else:
-            cm = input('Please input commit message: ')
-            subprocess.run(['git', 'commit', '-m', cm])
-    except Exception as e:
-        print(response_text)
+    print(response_text)
+    # # git commit にコミットメッセージを渡す
+    # try:
+    #     commit_message = response_text.split('</commit_message>')[0]
+    #     print(commit_message)
+    #     y_n = input('Do you want to commit? [y/n]: ')
+    #     if y_n == 'y':
+    #         subprocess.run(['git', 'commit', '-m', commit_message])
+    #     else:
+    #         cm = input('Please input commit message: ')
+    #         subprocess.run(['git', 'commit', '-m', cm])
+    # except Exception as e:
+    #     print(response_text)
 
 if __name__ == '__main__':
     main()
